@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import ArticleList from '../components/ArticleList';
+import Layout from '../components/Layout'
+
 
 export default function Home({articles}) {
   return (
@@ -24,3 +26,12 @@ export const getStaticProps = async () => {
     }
   }
 }
+
+Home.getLayout = function getLayout(home) {
+  return (
+    <Layout>
+      {home}
+    </Layout>
+  )
+}
+

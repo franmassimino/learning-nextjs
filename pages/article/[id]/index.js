@@ -2,6 +2,8 @@ import {useRouter} from 'next/router'
 import img from '../../../assets/post.jpg'
 import Image from 'next/image'
 import articleStyles from '../../../styles/Article.module.css'
+import Navbar from '../../../components/Navbar'
+import ArticleLayout from '../../../components/ArticleLayout'
 
 
 const Article = ({article}) => {
@@ -14,7 +16,7 @@ const Article = ({article}) => {
     )
 }
 
- export const getStaticProps = async (context) => {
+export const getStaticProps = async (context) => {
     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
     const article = await res.json()
     return {
@@ -34,5 +36,13 @@ export const getStaticPaths = async () => {
       fallback: false,
     }
 }
+
+Article.getLayout = function getLayout(article) {
+    return (
+      <ArticleLayout>
+        {article}
+      </ArticleLayout>
+    )
+  }
 
 export default Article

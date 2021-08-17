@@ -1,6 +1,7 @@
 import Head from "next/head"
+import Layout from "../components/Layout"
 
-const about = () => {
+const About = () => {
     return (
         <div>
             <Head>
@@ -12,4 +13,12 @@ const about = () => {
     )
 }
 
-export default about
+About.getLayout = function getLayout(home) {
+    return (
+      <Layout>
+        {home}
+      </Layout>
+    )
+  }
+
+export default About
